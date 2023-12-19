@@ -10,7 +10,6 @@ const NoPage = () => {
                     <div className={styles.errorDesc}>Page not found</div>
                 </div>
                 <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1698006085/fkkpp5a1l20nl7e05im7.png" alt="page not found" />
-                {/* <img src="../../../public/error/error.png" alt="page not found" /> */}
             </div>
         </Container>
     );

@@ -3,9 +3,6 @@ const Schema = mongoose.Schema;
 
 const SharesSchema = new Schema(
     {
-        imageURL: {
-            type: String,
-        },
         name: {
             type: String,
             required: true
@@ -29,7 +26,10 @@ const SharesSchema = new Schema(
         productCategories: {
             type: String,
             required: true
-        }
+        },
+        imageURL: {
+            type: String,
+        },
     }
 )
 

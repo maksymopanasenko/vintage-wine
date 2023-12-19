@@ -13,7 +13,7 @@ const Aside = ({article}) => {
     useEffect(() => {
         const getRelatedItems = async () => {
             const promises = article?.related.map((id) => {
-                return fetch(`http://127.0.0.1:4000/api/news/${id}`)
+                return fetch(`https://vintage-wine-nyw6.onrender.com/api/news/${id}`)
                     .then(res => res.json())
             })
             const fetchedArticles = await Promise.all(promises)

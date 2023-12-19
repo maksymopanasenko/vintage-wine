@@ -22,7 +22,7 @@ const ReservationModal = ({ onClose }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:4000/api/excursions/')
+    axios.get('https://vintage-wine-nyw6.onrender.com/api/excursions/')
       .then(excursions => {
         const options = excursions.data?.map(excursion => (
           {
@@ -48,7 +48,7 @@ const ReservationModal = ({ onClose }) => {
     const body = createExcursionLetter(values);
     dispatch(showLoadingAC());
     try {
-      axios.put(`http://127.0.0.1:4000/api/excursions/reservation/${values.title}`, body)
+      axios.put(`https://vintage-wine-nyw6.onrender.com/api/excursions/reservation/${values.title}`, body)
         .then(response => {
           if (response.status == 200) {
             dispatch(switchModalAC('thanks'));

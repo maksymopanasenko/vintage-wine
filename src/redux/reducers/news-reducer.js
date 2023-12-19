@@ -23,7 +23,7 @@ export const fetchNewsAC = (news) => ({
 
 export const fetchNewsThunk = () => {
     return async (dispatch) => {
-        const response = await fetch('http://127.0.0.1:4000/api/news')
+        const response = await fetch('https://vintage-wine-nyw6.onrender.com/api/news')
         const news = await response.json();
         dispatch(fetchNewsAC(news))
     }

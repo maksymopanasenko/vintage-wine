@@ -14,7 +14,7 @@ const ProductsForm = () => {
     const [options, setOptions] = useState([]);
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:4000/api/catalog/')
+        axios.get('https://vintage-wine-nyw6.onrender.com/api/catalog/')
             .then(categories => {
                 const options = categories.data?.map(category => (
                     {
@@ -52,7 +52,7 @@ const ProductsForm = () => {
         dispatch(switchSuccessMsg());
         const { productImg, slidesImageUrls, ...rest } = values;
 
-        axios.post('http://127.0.0.1:4000/api/products/', rest, {
+        axios.post('https://vintage-wine-nyw6.onrender.com/api/products/', rest, {
             headers: {
                 "Authorization": token,
             }
@@ -65,7 +65,7 @@ const ProductsForm = () => {
                     formData.append(`slidesImageUrls`, image);
                 });
 
-                axios.patch(`http://127.0.0.1:4000/api/products/images/${product.data._id}`, formData, {
+                axios.patch(`https://vintage-wine-nyw6.onrender.com/api/products/images/${product.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
                         "Content-Type": "multipart/form-data",

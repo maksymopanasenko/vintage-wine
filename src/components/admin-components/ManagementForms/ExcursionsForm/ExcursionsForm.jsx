@@ -20,7 +20,7 @@ const ExcursionsForm = () => {
         dispatch(switchSuccessMsg());
         const { imageURL, ...rest } = values;
 
-        axios.post('http://127.0.0.1:4000/api/excursions/', rest, {
+        axios.post('https://vintage-wine-nyw6.onrender.com/api/excursions/', rest, {
             headers: {
                 "Authorization": token,
             }
@@ -31,7 +31,7 @@ const ExcursionsForm = () => {
                 formData.append('title', excursion.data.title);
                 formData.append('description', excursion.data.description);
 
-                axios.put(`http://127.0.0.1:4000/api/excursions/${excursion.data._id}`, formData, {
+                axios.put(`https://vintage-wine-nyw6.onrender.com/api/excursions/${excursion.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
                         "Content-Type": "multipart/form-data",

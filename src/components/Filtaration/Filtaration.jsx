@@ -24,7 +24,7 @@ const Filtration = () => {
 
     useEffect(() => {
         (async () => {
-            const catalogLinks = await sendGetRequest('https://vintage-wine-nyw6.onrender.com/api/catalog');
+            const catalogLinks = await sendGetRequest('https://vintage-wine-shop.onrender.com/api/catalog');
             setLinks(prevLinks => [...prevLinks, ...catalogLinks]);
         })();
 

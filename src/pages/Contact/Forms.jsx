@@ -30,7 +30,7 @@ const Forms = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const response = await axios.post(
-        "https://vintage-wine-nyw6.onrender.com/api/contact",
+        "https://vintage-wine-shop.onrender.com/api/contact",
         values,
       );
       resetForm(initialValues);

@@ -13,7 +13,7 @@ const ContactRequests = () => {
     const [requests, setRequests] = useState([]);
 
     useEffect(() => {
-        axios.get('https://vintage-wine-nyw6.onrender.com/api/contact', {
+        axios.get('https://vintage-wine-shop.onrender.com/api/contact', {
             headers: {
                 "Authorization": token,
             }
@@ -26,7 +26,7 @@ const ContactRequests = () => {
 
     const handleReadRequest = (request) => {
         request.isRead = true;
-        axios.put(`https://vintage-wine-nyw6.onrender.com/api/contact/${request._id}`, request, {
+        axios.put(`https://vintage-wine-shop.onrender.com/api/contact/${request._id}`, request, {
             headers: {
                 "Authorization": token,
             }
@@ -38,7 +38,7 @@ const ContactRequests = () => {
     }
 
     const handleDeleteRequest = (id) => {
-        axios.delete(`https://vintage-wine-nyw6.onrender.com/api/contact/${id}`, {
+        axios.delete(`https://vintage-wine-shop.onrender.com/api/contact/${id}`, {
             headers: {
                 "Authorization": token,
             }

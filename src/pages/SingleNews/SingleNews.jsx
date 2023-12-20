@@ -16,7 +16,7 @@ const SingleNews = () => {
 
   useEffect(() => {
     const getArticleById = async () => {
-      const response = await fetch(`https://vintage-wine-nyw6.onrender.com/api/news/${id}`);
+      const response = await fetch(`https://vintage-wine-shop.onrender.com/api/news/${id}`);
       const fetchedArticle = await response.json();
       setArticle(fetchedArticle);
     };

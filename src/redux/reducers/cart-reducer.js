@@ -109,7 +109,7 @@ export const fetchCarts = (cart) => ({
 export const fetchNewsThunk = () => {
   return async (dispatch, getState) => {
     const curentState = getState();
-    const response = await fetch("https://vintage-wine-nyw6.onrender.com/api/cart", {
+    const response = await fetch("https://vintage-wine-shop.onrender.com/api/cart", {
       method: "GET",
       headers: { Authorization: curentState.user.token },
     });
@@ -127,7 +127,7 @@ export const removeCartThunk = () => {
 
     if (token) {
       axios
-        .delete(`https://vintage-wine-nyw6.onrender.com/api/cart`, {
+        .delete(`https://vintage-wine-shop.onrender.com/api/cart`, {
           headers: {
             Authorization: token,
           },
@@ -153,7 +153,7 @@ export const addToCartThunk = (item) => (dispatch, getState) => {
 
   if (token) {
     axios
-      .put(`https://vintage-wine-nyw6.onrender.com/api/cart/${item._id}`, item, {
+      .put(`https://vintage-wine-shop.onrender.com/api/cart/${item._id}`, item, {
         headers: {
           Authorization: token,
         },

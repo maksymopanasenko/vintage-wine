@@ -50,7 +50,7 @@ function LoginForm({ isLogin, formTexts, onLogin }) {
     if (isLogin) {
       try {
         axios
-          .post("https://vintage-wine-nyw6.onrender.com/api/customers/login", logValues, { silent: true })
+          .post("https://vintage-wine-shop.onrender.com/api/customers/login", logValues, { silent: true })
           .then((res) => {
             dispatch(setTokenAC(res.data.token));
             dispatch(setUserAC(res.data.user));
@@ -63,7 +63,7 @@ function LoginForm({ isLogin, formTexts, onLogin }) {
             };
 
             
-            axios.post('https://vintage-wine-nyw6.onrender.com/api/cart/', newCart, {
+            axios.post('https://vintage-wine-shop.onrender.com/api/cart/', newCart, {
               headers: {
                 "Authorization": res.data.token,
               },
@@ -72,7 +72,7 @@ function LoginForm({ isLogin, formTexts, onLogin }) {
               .catch(err => console.log(err))
               .finally(() => {
                 axios
-                  .get("https://vintage-wine-nyw6.onrender.com/api/cart/", {
+                  .get("https://vintage-wine-shop.onrender.com/api/cart/", {
                     headers: {
                       Authorization: res.data.token,
                     },
@@ -84,7 +84,7 @@ function LoginForm({ isLogin, formTexts, onLogin }) {
                     }
 
                     if (currentCart.length) {
-                      axios.put('https://vintage-wine-nyw6.onrender.com/api/cart/', { products: currentCart }, {
+                      axios.put('https://vintage-wine-shop.onrender.com/api/cart/', { products: currentCart }, {
                         headers: {
                           "Authorization": res.data.token,
                         },
@@ -109,7 +109,7 @@ function LoginForm({ isLogin, formTexts, onLogin }) {
     } else {
       try {
         axios
-          .post("https://vintage-wine-nyw6.onrender.com/api/customers/", regValues)
+          .post("https://vintage-wine-shop.onrender.com/api/customers/", regValues)
           .then(() => {
             dispatch(hideLoadingAC());
             dispatch(signInAC());

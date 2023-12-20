@@ -11,7 +11,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 
 // const getProductNames = async () => {
 //     try {
-//         const response = await axios.get(`https://vintage-wine-nyw6.onrender.com/api/products`);
+//         const response = await axios.get(`https://vintage-wine-shop.onrender.com/api/products`);
 //         return response.data.map(item => item.name);
 //     } catch (error) {
 //         console.error('Error fetching data:', error);
@@ -27,7 +27,7 @@ const DoughnutChart = () => {
     const token = useSelector((state) => state.user.token);
 
     useEffect(() => {
-        axios.get(`https://vintage-wine-nyw6.onrender.com/api/products`)
+        axios.get(`https://vintage-wine-shop.onrender.com/api/products`)
             .then(response => {
                 const data = response.data.map(item => item.name);
                 setProductNames(data);
@@ -36,7 +36,7 @@ const DoughnutChart = () => {
     }, []);
 
     useEffect(() => {
-        axios.get('https://vintage-wine-nyw6.onrender.com/api/orders/all', {
+        axios.get('https://vintage-wine-shop.onrender.com/api/orders/all', {
             headers: {
                 "Authorization": token,
             }

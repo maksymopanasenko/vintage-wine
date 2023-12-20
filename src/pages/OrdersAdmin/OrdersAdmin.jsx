@@ -15,7 +15,7 @@ const Orders = () => {
     const [currentTab, setCurrentTab] = useState(1);
 
     useEffect(() => {
-        axios.get('https://vintage-wine-nyw6.onrender.com/api/orders/all', {
+        axios.get('https://vintage-wine-shop.onrender.com/api/orders/all', {
             headers: {
                 "Authorization": token,
             }

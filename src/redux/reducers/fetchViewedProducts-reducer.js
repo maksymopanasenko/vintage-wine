@@ -25,7 +25,7 @@ const fetchViewedProductsAC = (viewedProducts) => ({
 export const fetchViewedProductsThunk = () => {
   return async (dispatch) => {
     const response = await fetch(
-      "https://vintage-wine-nyw6.onrender.com/api/last-viewed-products"
+      "https://vintage-wine-shop.onrender.com/api/last-viewed-products"
     );
     const viewedProducts = await response.json();
     dispatch(fetchViewedProductsAC(viewedProducts));

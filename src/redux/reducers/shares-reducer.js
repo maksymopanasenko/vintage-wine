@@ -23,7 +23,7 @@ const fetchCatalogAC = (shares) => ({
 
 export const fetchSharesThunk = () => {
     return async (dispatch) => {
-        const response = await fetch('https://vintage-wine-nyw6.onrender.com/api/shares');
+        const response = await fetch('https://vintage-wine-shop.onrender.com/api/shares');
         const shares = await response.json();
 
         dispatch(fetchCatalogAC(shares));

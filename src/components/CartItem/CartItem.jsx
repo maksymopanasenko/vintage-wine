@@ -28,7 +28,7 @@ const CartItem = ({ count, product, popUpView }) => {
         if (token) {
             try {
                 axios
-                    .delete(`https://vintage-wine-nyw6.onrender.com/api/cart/${_id}`, {
+                    .delete(`https://vintage-wine-shop.onrender.com/api/cart/${_id}`, {
                         headers: {
                             Authorization: token,
                         },

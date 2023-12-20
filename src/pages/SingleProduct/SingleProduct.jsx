@@ -65,7 +65,7 @@ const SingleProduct = () => {
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await axios.get(`https://vintage-wine-nyw6.onrender.com/api/products/${localStorage.getItem('viewedProducts')}`);
+                const response = await axios.get(`https://vintage-wine-shop.onrender.com/api/products/${localStorage.getItem('viewedProducts')}`);
                 setSingleItem(response.data);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -82,7 +82,7 @@ const SingleProduct = () => {
 
             const addViewedProduct = async () => {
                 try {
-                    await axios.post(`https://vintage-wine-nyw6.onrender.com/api/last-viewed-products`, { productId: dataToSend });
+                    await axios.post(`https://vintage-wine-shop.onrender.com/api/last-viewed-products`, { productId: dataToSend });
                 } catch (err) { }
             };
             addViewedProduct();

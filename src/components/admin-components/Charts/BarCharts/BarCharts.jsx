@@ -33,7 +33,7 @@ const BarCharts = () => {
     const token = useSelector((state) => state.user.token);
 
     useEffect(() => {
-        axios.get('https://vintage-wine-nyw6.onrender.com/api/orders/all', {
+        axios.get('https://vintage-wine-shop.onrender.com/api/orders/all', {
             headers: {
                 "Authorization": token,
             }

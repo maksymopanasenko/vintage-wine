@@ -24,7 +24,7 @@ const SharesForm = () => {
         dispatch(switchSuccessMsg());
         const { imageURL, ...rest } = values;
 
-        axios.post('https://vintage-wine-nyw6.onrender.com/api/shares/', rest, {
+        axios.post('https://vintage-wine-shop.onrender.com/api/shares/', rest, {
             headers: {
                 "Authorization": token,
             }
@@ -36,7 +36,7 @@ const SharesForm = () => {
                     formData.append(key, value);
                 });
 
-                axios.put(`https://vintage-wine-nyw6.onrender.com/api/shares/images/${excursion.data._id}`, formData, {
+                axios.put(`https://vintage-wine-shop.onrender.com/api/shares/images/${excursion.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
                         "Content-Type": "multipart/form-data",

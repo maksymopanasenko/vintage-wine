@@ -18,7 +18,7 @@ const SingleOrder = () => {
     const pathParts = useBreadcrumbs();
 
     useEffect(() => {
-        axios.get(`https://vintage-wine-nyw6.onrender.com/api/orders/${currentOrderId}`, {
+        axios.get(`https://vintage-wine-shop.onrender.com/api/orders/${currentOrderId}`, {
             headers: {
                 "Authorization": token,
             }
@@ -39,7 +39,7 @@ const SingleOrder = () => {
 
     const handleShipment = () => {
         currentOrder.completed = true;
-        axios.put(`https://vintage-wine-nyw6.onrender.com/api/orders/${currentOrderId}`, currentOrder, {
+        axios.put(`https://vintage-wine-shop.onrender.com/api/orders/${currentOrderId}`, currentOrder, {
             headers: {
                 "Authorization": token,
             }

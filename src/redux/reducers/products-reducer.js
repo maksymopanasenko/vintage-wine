@@ -40,7 +40,7 @@ export const filterProducts = (searchTerm) => ({
 
 export const fetchProductsThunk = () => {
   return async (dispatch) => {
-    const response = await fetch("https://vintage-wine-nyw6.onrender.com/api/products");
+    const response = await fetch("https://vintage-wine-shop.onrender.com/api/products");
     const products = await response.json();
 
     dispatch(fetchProductsAC(products));

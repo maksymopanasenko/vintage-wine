@@ -17,6 +17,7 @@ import {
   createCheckoutSessionThunk,
   setInfoDataStatusAC,
 } from "../../redux/reducers/order-reducer";
+import Plus from './icons/plus.svg?react';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PK);
 
@@ -179,10 +180,7 @@ const Checkout = () => {
                       type="button"
                       onClick={() => setShowComment(!showComment)}
                     >
-                      <img
-                        src="src\pages\Checkout\icons\Checkout_plus_icon.svg"
-                        alt="plus"
-                      />
+                      <Plus />
                       <p className={styles.Comment}>Comment on the order</p>
                     </button>
                   </div>

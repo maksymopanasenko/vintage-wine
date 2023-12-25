@@ -3,6 +3,14 @@
 .f{
     min-height: calc(100vh - 800px);
 }
+
+.CatalogContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+}
+
 .CatalogList {
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
@@ -38,6 +46,7 @@
             position: absolute;
             top: 30px;
             right: 20px;
+            text-shadow: 0 0 10px black;
             @media screen and (min-width: $tablet-xlg) {
                 font-size: 70px;
             }

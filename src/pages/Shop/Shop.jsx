@@ -70,7 +70,7 @@ const Shop = () => {
     };
 
     const url =
-      "https://vintage-wine-shop.onrender.com/api/products/filter?" + createUrlQuery(filter);
+      "http://localhost:4000/api/products/filter?" + createUrlQuery(filter);
 
     (async () => {
       dispatch(showLoadingAC());

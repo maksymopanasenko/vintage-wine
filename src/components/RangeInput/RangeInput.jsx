@@ -16,7 +16,7 @@ const RangeInput = () => {
   }, [range]);
 
   useEffect(() => {
-    if (!Object.keys(filter).length) {
+    if (Object.keys(filter).length <= 1) {
       dispatch(changeRangeAC(0))
     }
   }, [filter]);

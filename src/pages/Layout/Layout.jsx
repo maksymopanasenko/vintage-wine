@@ -6,6 +6,7 @@ import { createPortal } from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { switchModalAC, toggleModalAC } from '../../redux/reducers/modalWindow-reducer';
+import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 const Layout = () => {
     const isModalOpen = useSelector(state => state.modal.isModalOpen);
@@ -30,6 +31,8 @@ const Layout = () => {
                 <Overlay />,
                 document.body
             )}
+            
+            <ScrollToTop />
         </>
     );
 };

@@ -33,6 +33,7 @@ import ManagementWrapper from "./components/admin-components/ManagementWrapper/M
 import ContactRequests from "./pages/ContactRequests/ContactRequests";
 import SingleOrder from "./pages/SingleOrder/SingleOrder";
 import CheckoutSuccess from "./pages/Checkout/CheckoutSuccess/CheckoutSuccess";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 const App = () => {
   const dispatch = useDispatch();

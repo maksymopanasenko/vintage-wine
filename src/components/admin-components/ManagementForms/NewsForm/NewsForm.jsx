@@ -68,6 +68,7 @@ const NewsForm = () => {
                 axios.patch(`https://vintage-wine-shop.onrender.com/api/news/images/${news.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
+                        path: `./static/images/news/`,
                         "Content-Type": "multipart/form-data",
                     }
                 })

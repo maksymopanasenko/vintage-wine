@@ -61,13 +61,14 @@ const ProductsForm = () => {
                 const formData = new FormData();
                 formData.append('slidesImageUrls', productImg);
 
-                Array.from(slidesImageUrls).forEach((image, index) => {
+                Array.from(slidesImageUrls).forEach(image => {
                     formData.append(`slidesImageUrls`, image);
                 });
 
                 axios.patch(`https://vintage-wine-shop.onrender.com/api/products/images/${product.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
+                        path: `./static/images/products/`,
                         "Content-Type": "multipart/form-data",
                     }
                 })

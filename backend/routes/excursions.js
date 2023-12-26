@@ -1,10 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const multer = require('multer');
 
-
-const upload = multer({ dest: 'uploads/' });
 
 //Import controllers
 const {
@@ -13,6 +10,8 @@ const {
   addExcursion,
   uploadExcursionImg
 } = require("../controllers/excursions");
+
+const { upload } = require("../commonHelpers/multer");
 
 
 // @route   GET /excursions

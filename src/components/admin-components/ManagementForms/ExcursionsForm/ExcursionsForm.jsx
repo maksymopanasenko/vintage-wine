@@ -34,6 +34,7 @@ const ExcursionsForm = () => {
                 axios.put(`https://vintage-wine-shop.onrender.com/api/excursions/${excursion.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
+                        path: `./static/images/excursions/`,
                         "Content-Type": "multipart/form-data",
                     }
                 })

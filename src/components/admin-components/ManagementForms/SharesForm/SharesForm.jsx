@@ -39,6 +39,7 @@ const SharesForm = () => {
                 axios.put(`https://vintage-wine-shop.onrender.com/api/shares/images/${excursion.data._id}`, formData, {
                     headers: {
                         "Authorization": token,
+                        path: `./static/images/shares/`,
                         "Content-Type": "multipart/form-data",
                     }
                 })

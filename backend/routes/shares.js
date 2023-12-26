@@ -1,9 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const multer = require('multer');
-
-const upload = multer({ dest: 'uploads/' });
 
 const {
     getShares,
@@ -11,6 +8,8 @@ const {
     getSharesById,
     uploadSharesImg
 } = require("../controllers/shares");
+
+const { upload } = require("../commonHelpers/multer");
 
 // @route   GET /shares
 // @desc    GET existing shares

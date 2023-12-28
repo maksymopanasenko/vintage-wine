@@ -8,19 +8,6 @@ import axios from 'axios';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-
-// const getProductNames = async () => {
-//     try {
-//         const response = await axios.get(`https://vintage-wine-shop.onrender.com/api/products`);
-//         return response.data.map(item => item.name);
-//     } catch (error) {
-//         console.error('Error fetching data:', error);
-//     }
-// }
-
-// const productNames = await getProductNames();
-
-
 const DoughnutChart = () => {
     const [orderData, setOrderData] = useState([]);
     const [productNames, setProductNames] = useState([]);

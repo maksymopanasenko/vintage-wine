@@ -43,17 +43,6 @@ module.exports = {
     "no-underscore-dangle": "off",
     "react/require-default-props": "warn",
     "prefer-destructuring": "warn",
-    "react/button-has-type": "warn",
-    // indent: ['error', 2],
-    // semi: ['error', 'always'],
-    // quotes: ['error', 'single'],
-    // 'max-len': ['error', { code: 80 }],
-    // 'no-var': 'error',
-    // 'max-params': ['error', 3],
-    // 'no-unused-vars': 'error',
-    // 'no-eval': 'error',
-    // 'no-console': 0,
-    // 'prefer-arrow-callback': 'error',
-    // 'prefer-destructuring': 'error',
+    "react/button-has-type": "warn"
   },
 };

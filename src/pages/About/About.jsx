@@ -16,64 +16,52 @@ const About = () => {
         {
             id: 1,
             imageUrl: 'https://res.cloudinary.com/dhpukux5x/image/upload/v1698006472/czjkoe7i7ghgzvwda6fq.png'
-            // imageUrl: '../../../public/imageProject/about-us/grape.png'
         },
         {
             id: 2,
             imageUrl:  'https://res.cloudinary.com/dhpukux5x/image/upload/v1701809728/basket-grapes_bummxg.png'
-            // imageUrl:  '../../../public/imageProject/about-us/basket-grapes.png'
         },
         {
             id: 4,
             imageUrl: 'https://res.cloudinary.com/dhpukux5x/image/upload/v1698006472/f6r1lklgqunfof2slfbz.png'
-            // imageUrl: '../../../public/imageProject/about-us/shelf-barrels.png'
         },
         {
             id: 5,
             imageUrl: 'https://res.cloudinary.com/dhpukux5x/image/upload/v1701809832/delivey_lapvmk.jpg'
-            // imageUrl: '../../../public/imageProject/about-us/delivey.jpg'
         },
         {
             id: 6,
             imageUrl: 'https://res.cloudinary.com/dhpukux5x/image/upload/v1701809891/wine_in_shop_g6ih4g.jpg'
-            // imageUrl: '../../../public/imageProject/about-us/wine_in_shop.jpg'
         },
         {
             id: 7,
             imageUrl:  'https://res.cloudinary.com/dhpukux5x/image/upload/v1701015599/w2_2_is0xk5.jpg'
-            // imageUrl:  '../../../public/imageProject/products/wine/w2_2.jpg'
         },
     ]
     const awardsData = [
         {
             id: 1,
             imageUrl: 'https://res.cloudinary.com/dhpukux5x/image/upload/v1701810546/spike-award_y90cho.png'
-            // imageUrl: '../../../public/imageProject/about-us/spike-award.png'
         },
         {
             id: 2,
             imageUrl:  'https://res.cloudinary.com/dhpukux5x/image/upload/v1701810474/award-cup_kp9yf9.png'
-            // imageUrl:  '../../../public/imageProject/about-us/award-cup.png'
         },
         {
             id: 3,
             imageUrl:  'https://res.cloudinary.com/dhpukux5x/image/upload/v1701810547/spike-medal_tmyzba.png'
-            // imageUrl:  '../../../public/imageProject/about-us/spike-medal.png'
         },
         {
             id: 4,
             imageUrl: 'https://res.cloudinary.com/dhpukux5x/image/upload/v1698006473/nmog0rftntdsyue6bnaq.png'
-            // imageUrl: '../../../public/imageProject/about-us/award-medal.png'
         },
          {
             id: 5,
             imageUrl:  'https://res.cloudinary.com/dhpukux5x/image/upload/v1701810474/award-cup_kp9yf9.png'
-            // imageUrl:  '../../../public/imageProject/about-us/award-cup.png'
         },
           {
             id: 6,
             imageUrl:  'https://res.cloudinary.com/dhpukux5x/image/upload/v1701810547/spike-medal_tmyzba.png'
-            // imageUrl:  '../../../public/imageProject/about-us/spike-medal.png'
         }
     ]
 
@@ -95,10 +83,8 @@ const About = () => {
                             <p className={styles.mission_text}>Is to produce wines of the highest class, which are distinguished by the uniqueness of taste and aroma. We prefer traditional winemaking methods, combining them with modern technologies to create the best result.</p>
                         </div>
                         <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1698006473/vjn3b2obij1lvelcorcz.png" alt="glass" />
-                        {/* <img src="../../../public/imageProject/about-us/glass-img.png" alt="glass" /> */}
                     </div>
                     <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1698006472/kbr1z8jlbdcdmoccpngj.png" alt="glass" className={ styles.corcsImage} />
-                    {/* <img src="../../../public/imageProject/about-us/corcs.png" alt="glass" className={ styles.corcsImage} /> */}
                 </section>
                 <section className={styles.vintageVineDesc}>
                     <div className={styles.sectionContent}>
@@ -111,11 +97,9 @@ const About = () => {
                         <p>Together we share the joy of winemaking and the unforgettable moments that mark your special events and joyful moments in life. Your support and your smiles of gratitude are our best rewards.</p>
                         </div>
                         <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1698006474/nsl8c7ovdp68scblya79.png" alt="grapes" />
-                        {/* <img src="../../../public/imageProject/about-us/bunch-grapes.png" alt="grapes" /> */}
                     </div>
                     <div className={styles.sectionImage}>
                         <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1701809580/vintage_jr0fva.png" alt="bottle" />
-                        {/* <img src="../../../public/imageProject/about-us/vintage.png" alt="bottle" /> */}
                     </div>
                 </section>
                 <section className={styles.OurProduction}>
@@ -125,7 +109,6 @@ const About = () => {
             </Container>
             <section className={styles.AwardsVineyards}>
                 <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1701810896/glass-red_rpjw6a.png" alt="glass" className={styles.sectionBgImage}/>
-                {/* <img src="../../../public/imageProject/about-us/glass-red.png" alt="" className={styles.sectionBgImage}/> */}
                 <Container>
                     <SectionTitle subText='Our' secText='Awards' />
                     <CustomSlider type='AWARDS_ABOUT' sliderArray={awardsData} toShow={4} toScroll={1} />
@@ -135,11 +118,9 @@ const About = () => {
                             <div className={styles.contentColumn}>
                                 <h4>Sun-kissed Vineyard Haven</h4>
                                 <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1701810808/shelf-bottles_xmxvhb.png" alt="bottles" />
-                                {/* <img src="../../../public/imageProject/about-us/shelf-bottles.png" alt="bottles" /> */}
                             </div>
                             <div className={styles.contentColumn}>
                                 <img src="https://res.cloudinary.com/dhpukux5x/image/upload/v1698006476/wszarjmgmty0spneuhbh.png" alt="bottles" />
-                                {/* <img src="../../../public/imageProject/about-us/three-bootles.png" alt="bottles" /> */}
                                 <div className={ styles.desc}>
                                     <p>Welcome to our vineyard - an oasis of inspiration and taste refinement. On these sun-drenched slopes, our vineyard grows and ripens, turning into a select grape variety of the highest quality.</p>
                                     <p>Each vine is a living creation of nature, carefully cultivated by the hands of our experts. Our vineyards are surrounded by mountain air and enriched with unique soil, creating an ideal environment for the birth of the best wine juices.</p>

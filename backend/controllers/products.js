@@ -181,36 +181,6 @@ exports.updateProductImg = (req, res, next) => {
             message: `Error happened on server: "${err}" `
           });
         }
-
-        //  const filePaths = req.files.map(file => file.path);
-
-
-
-        // try {
-        //   const result = await Promise.all(uploadPromises);
-          // const resultUrls = result.map(res => {
-          //   const { url, ...rest } = res;
-          //   return url;
-          // });
-
-        //   const initialQuery = _.cloneDeep(req.body);
-        //   initialQuery.imageURL = resultUrls;
-        //   const updatedExcursion = queryCreator(initialQuery);
-
-        //   Shares.findOneAndUpdate(
-        //     { _id: req.params.id },
-        //     { $set: updatedExcursion },
-        //     { new: true }
-        //   )
-        //     .then(excursion => {
-        //       res.json({ excursion });
-        //     })
-        //     .catch(err =>
-        //       res.status(400).json({
-        //         message: `Error happened on server: "${err}" `
-        //       })
-        //     );
-
       }
     })
     .catch(err =>

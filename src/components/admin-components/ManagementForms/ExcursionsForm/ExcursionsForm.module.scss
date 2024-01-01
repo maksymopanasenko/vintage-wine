@@ -17,9 +17,29 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .AddExcursionError {
     color: $btn-bg;
+}
+
+.AddExcursionTitle {
+    @include fonts(30px, $main-font);
+    margin-bottom: 10px;
+}
+
+.ExcursionList {
+    max-width: 500px;
+    margin: 0 auto 80px;
+    @include fonts(18px, $secondary-font);
+}
+
+.ExcursionItem {
+    border: $brd-white;
+    padding: 20px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }

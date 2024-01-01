@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 import Navigation from '../Navigation/Navigation';
-import CloseBtn from './icons/close.svg?react';
+import CloseBtn from '../../assets/icons/close.svg?react';
 import { openMenuAC } from '../../redux/reducers/mobMenu-reducer';
 import styles from './DropdownMenu.module.scss';
 

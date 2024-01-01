@@ -5,11 +5,9 @@ import styles from './Management.module.scss'
 const Management = () => {
     return (
         <section className={styles.Management}>
-            {/* <Container> */}
-                <div className={styles.ManagementProducts}>
-                        <ManagementControllers />
-                </div>
-            {/* </Container> */}
+            <div className={styles.ManagementProducts}>
+                <ManagementControllers />
+            </div>
         </section>
     );
 }

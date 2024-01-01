@@ -5,10 +5,31 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import excursionsValidationSchema from "../../../../validation/excursionsValidationSchema";
 import { changeMessageAC, switchSuccessMsg } from "../../../../redux/reducers/submitForm-reducer";
+import { useEffect, useState } from "react";
+import CloseBtn from '../../../../assets/icons/close.svg?react';
 
 const ExcursionsForm = () => {
+    const [excursions, setExcursions] = useState([]);
     const token = useSelector((state) => state.user.token);
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        axios.get('https://vintage-wine-shop.onrender.com/api/excursions/')
+            .then(excursions => setExcursions(excursions.data))
+            .catch(err => console.log(err));
+    }, []);
+
+    const deleteExcursion = (id) => {
+        axios.delete(`https://vintage-wine-shop.onrender.com/api/excursions/${id}`, {
+            headers: {
+                "Authorization": token,
+            }
+        })
+            .then(excursions => {
+                setExcursions(excursions.data);
+            })
+            .catch(err => console.log(err));
+    }
 
     const initialValues = {
         title: "",
@@ -38,8 +59,9 @@ const ExcursionsForm = () => {
                         "Content-Type": "multipart/form-data",
                     }
                 })
-                    .then(excursion => {
+                    .then(excursions => {
                         dispatch(changeMessageAC("Data successfully saved!"));
+                        setExcursions(excursions.data);
                     })
                     .catch(err => {
                         dispatch(changeMessageAC("Failure!"))
@@ -55,6 +77,18 @@ const ExcursionsForm = () => {
 
     return (
         <div>
+            <ul className={styles.ExcursionList}>
+                {
+                    excursions?.map(excursion => {
+                        return (
+                            <li key={excursion._id} className={styles.ExcursionItem}>
+                                <p>{excursion.title}</p>
+                                <CloseBtn onClick={() => deleteExcursion(excursion._id)} />
+                            </li>
+                        )
+                    })
+                }
+            </ul>
             <Formik
                 initialValues={initialValues}
                 validationSchema={excursionsValidationSchema}
@@ -62,6 +96,7 @@ const ExcursionsForm = () => {
             >
                 {({ isSubmitting, setFieldValue }) => (
                     <Form className={styles.AddExcursionForm}>
+                        <h4 className={styles.AddExcursionTitle}>Add new excursion</h4>
                         <div className={styles.AddExcursionFields}>
                             <Field
                                 className={styles.AddExcursionInput}

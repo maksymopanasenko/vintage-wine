@@ -103,7 +103,14 @@ exports.uploadExcursionImg = (req, res, next) => {
             { new: true }
           )
             .then(excursion => {
-              res.json({ excursion });
+              Excursion.find()
+                .then(excursions => {
+                  res.status(200).send(excursions)
+                }).catch(err =>
+                  res.status(500).json({
+                    message: `Error happened on server: "${err}" `
+                  })
+                )
             })
             .catch(err =>
               res.status(400).json({
@@ -139,4 +146,31 @@ exports.addExcursion = (req, res, next) => {
         message: `Error happened on server: "${err}" `
       })
     );
+};
+
+exports.deleteExcursion = (req, res, next) => {
+  Excursion.findOne({ _id: req.params.id }).then(async excursion => {
+    if (!excursion) {
+      return res
+        .status(400)
+        .json({ message: `Excursion with _id "${req.params.id}" is not found.` });
+    } else {
+      Excursion.deleteOne({ _id: req.params.id })
+        .then(deletedCount =>
+          Excursion.find()
+            .then(excursions => {
+              res.status(200).send(excursions)
+            }).catch(err =>
+              res.status(500).json({
+                message: `Error happened on server: "${err}" `
+              })
+            )
+        )
+        .catch(err =>
+          res.status(400).json({
+            message: `Error happened on server: "${err}" `
+          })
+        );
+    }
+  });
 };

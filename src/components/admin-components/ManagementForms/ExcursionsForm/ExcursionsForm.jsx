@@ -5,31 +5,18 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import excursionsValidationSchema from "../../../../validation/excursionsValidationSchema";
 import { changeMessageAC, switchSuccessMsg } from "../../../../redux/reducers/submitForm-reducer";
-import { useEffect, useState } from "react";
-import CloseBtn from '../../../../assets/icons/close.svg?react';
+import { useEffect } from "react";
+import { addExcursionAC, fetchExcursionsThunk } from "../../../../redux/reducers/excursions-reducer";
+import ExcursionItem from "../ExcursionItem/ExcursionItem";
 
 const ExcursionsForm = () => {
-    const [excursions, setExcursions] = useState([]);
     const token = useSelector((state) => state.user.token);
+    const excursions = useSelector((state) => state.excursions.excursions);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        axios.get('https://vintage-wine-shop.onrender.com/api/excursions/')
-            .then(excursions => setExcursions(excursions.data))
-            .catch(err => console.log(err));
-    }, []);
-
-    const deleteExcursion = (id) => {
-        axios.delete(`https://vintage-wine-shop.onrender.com/api/excursions/${id}`, {
-            headers: {
-                "Authorization": token,
-            }
-        })
-            .then(excursions => {
-                setExcursions(excursions.data);
-            })
-            .catch(err => console.log(err));
-    }
+        dispatch(fetchExcursionsThunk());
+    }, [dispatch]);
 
     const initialValues = {
         title: "",
@@ -59,9 +46,9 @@ const ExcursionsForm = () => {
                         "Content-Type": "multipart/form-data",
                     }
                 })
-                    .then(excursions => {
+                    .then(excursion => {
                         dispatch(changeMessageAC("Data successfully saved!"));
-                        setExcursions(excursions.data);
+                        dispatch(addExcursionAC(excursion.data));
                     })
                     .catch(err => {
                         dispatch(changeMessageAC("Failure!"))
@@ -79,14 +66,9 @@ const ExcursionsForm = () => {
         <div>
             <ul className={styles.ExcursionList}>
                 {
-                    excursions?.map(excursion => {
-                        return (
-                            <li key={excursion._id} className={styles.ExcursionItem}>
-                                <p>{excursion.title}</p>
-                                <CloseBtn onClick={() => deleteExcursion(excursion._id)} />
-                            </li>
-                        )
-                    })
+                    excursions?.map(excursion => (
+                        <ExcursionItem key={excursion._id} data={excursion} />
+                    ))
                 }
             </ul>
             <Formik

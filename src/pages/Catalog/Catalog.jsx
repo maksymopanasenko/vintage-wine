@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalogThunk } from "../../redux/reducers/catalog-reducer";
 import { Link } from "react-router-dom";
-import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import useBreadcrumbs from "../../hooks/useBreadcrumbs";
 

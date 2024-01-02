@@ -13,7 +13,6 @@ import catalogReducer from "../reducers/catalog-reducer";
 import collectionsReducer from "../reducers/collections-reducer";
 import authorizationReducer from "../reducers/authorization-reducer";
 import mobileMenuReducer from "../reducers/mobMenu-reducer";
-// import ViewedProductsReducer from '../reducers/lastViewed-products';
 import modalWindowReducer from "../reducers/modalWindow-reducer";
 import newsReducer from "../reducers/news-reducer";
 import cartsReducer from "../reducers/cart-reducer";
@@ -26,10 +25,10 @@ import loadingReducer from "../reducers/loading-reducer";
 import orderReducer from "../reducers/order-reducer";
 import orderAdminReducer from "../reducers/orderAdmin-reducer";
 import submitFormReducer from "../reducers/submitForm-reducer";
+import excursionsReducer from "../reducers/excursions-reducer";
 
 const rootReducer = combineReducers({
   fetchViewedProducts: fetchViewedProductsReducer,
-  // viewedProducts: fetchViewedProductsReducer,
   products: productsReducer,
   catalog: catalogReducer,
   collections: collectionsReducer,
@@ -46,6 +45,7 @@ const rootReducer = combineReducers({
   order: orderReducer,
   orderAdmin: orderAdminReducer,
   formSubmit: submitFormReducer,
+  excursions: excursionsReducer,
 });
 
 const persistConfig = {

@@ -1,0 +1,41 @@
+@import '../../../../assets/mixins/mixins';
+@import '../../../../assets/variables/variables';
+
+
+.ExcursionItem {
+    border: $brd-white;
+    margin-bottom: 20px;
+
+    svg {
+        cursor: pointer;
+
+        &:hover path {
+            fill: $btn-bg;
+        }
+
+        path {
+            @include transition;
+        }
+    }
+}
+
+.ExcursionHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    color: $black-color;
+    background: $secondary-color;
+    @include fonts(20px, $secondary-font);
+    font-weight: 700;
+}
+
+.ExcursionText {
+    padding: 20px 12px;
+}
+
+.ExcursionButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

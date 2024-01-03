@@ -37,6 +37,7 @@
     grid-template-rows: repeat(2, 1fr);
     grid-template-rows: 445px 310px;
     gap: 5px;
+    margin-bottom: 10px;
 
     @media screen and (min-width: $tablet) {
         grid-template-rows: 502px 410px;

@@ -5,6 +5,12 @@
 .ExcursionItem {
     border: $brd-white;
     margin-bottom: 20px;
+    display: flex;
+    max-height: 150px;
+
+    img {
+        width: 30%;
+    }
 
     svg {
         cursor: pointer;
@@ -19,6 +25,10 @@
     }
 }
 
+.ExcursionContent {
+    width: 100%;
+}
+
 .ExcursionHeader {
     display: flex;
     align-items: center;
@@ -31,11 +41,25 @@
 }
 
 .ExcursionText {
-    padding: 20px 12px;
+    padding: 12px;
+    height: 100px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: $secondary-color;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $main-color;
+        border-radius: 5px;
+    }
 }
 
 .ExcursionButtons {
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-left: 10px;
 }

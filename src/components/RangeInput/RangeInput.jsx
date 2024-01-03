@@ -27,7 +27,7 @@ const RangeInput = () => {
 
   return (
     <div className={styles.RangeInput} data-testid="RangeInput">
-      <label htmlFor="range" className={styles.Value} style={{ left: `${range / 50}%` }}><span>{range}</span>₴</label>
+      <label htmlFor="range" className={styles.Value} style={{ left: `${range / 50}%` }}>{range > 0 && "<"}<span>{range}</span>₴</label>
       <input id="range" type="range" min="0" max="5000" value={range} onChange={handleChange} />
       <span className={styles.RangeInputMin}>0₴</span>
       <span className={styles.RangeInputMax}>5000₴</span>

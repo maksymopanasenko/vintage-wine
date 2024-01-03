@@ -59,6 +59,7 @@ const Shop = () => {
     const createUrlQuery = (filterConfigs) => {
       searchParams.set("perPage", "10");
       searchParams.set("startPage", currentPage);
+      searchParams.set("categories", "all");
 
       Object.entries(filterConfigs).forEach(([name, value]) => {
         searchParams.set(name, value);

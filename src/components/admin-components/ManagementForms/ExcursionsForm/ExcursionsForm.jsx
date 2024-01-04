@@ -77,7 +77,12 @@ const ExcursionsForm = () => {
             </ul>
 
             <div className={styles.TriggerButton}>
-                <Button text={isAction ? 'Cancel' : 'Add new excursion'} onClick={addNewExcursion} />
+                {!isAction && (
+                    <Button
+                        text='Add new excursion'
+                        onClick={addNewExcursion}
+                    />
+                )}
             </div>
 
             {
@@ -125,11 +130,18 @@ const ExcursionsForm = () => {
                                         component="div"
                                     />
                                 </div>
-                                <Button
-                                    type="submit"
-                                    text="Save"
-                                    disabled={isSubmitting}
-                                />
+                                <div className={styles.FormButtons}>
+                                    <Button
+                                        type="submit"
+                                        text="Save"
+                                        disabled={isSubmitting}
+                                    />
+                                    <Button
+                                        type="button"
+                                        text="Cancel"
+                                        onClick={addNewExcursion}
+                                    />
+                                </div>
                             </Form>
                         )}
                     </Formik>

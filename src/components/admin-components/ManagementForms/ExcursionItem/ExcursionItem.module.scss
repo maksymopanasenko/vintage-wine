@@ -6,7 +6,7 @@
     border: $brd-white;
     margin-bottom: 20px;
     display: flex;
-    max-height: 150px;
+    max-height: 200px;
 
     img {
         width: 30%;
@@ -42,7 +42,7 @@
 
 .ExcursionText {
     padding: 12px;
-    height: 100px;
+    height: 120px;
     overflow-y: auto;
 
     &::-webkit-scrollbar {
@@ -62,4 +62,29 @@
     align-items: center;
     gap: 10px;
     margin-left: 10px;
+}
+
+.ExcursionItemInput {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.ExcursionName {
+    border: 1px solid transparent;
+    padding: 5px;
+}
+
+.ExcursionItemInputArea {
+    height: 120px;
+    width: 100%;
+    resize: none;
+    @include fonts(16px, $secondary-font);
+    outline: none;
+    padding: 10px;
+    background: #fff;
+}
+
+.ExcursionItemForm {
+    display: flex;
+    flex-direction: column;
 }

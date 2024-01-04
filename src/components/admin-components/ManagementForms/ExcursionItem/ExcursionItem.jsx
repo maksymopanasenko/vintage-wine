@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './ExcursionItem.module.scss';
-import { deleteExcursionAC } from '../../../../redux/reducers/excursions-reducer';
+import { deleteExcursionAC, updateExcursionAC } from '../../../../redux/reducers/excursions-reducer';
 import axios from 'axios';
 import Trash from './icons/delete.svg?react';
 import Edit from './icons/edit.svg?react';
@@ -34,9 +34,19 @@ const ExcursionItem = ({ data }) => {
             .catch(err => console.log(err));
     }
 
-    const handleSubmit = (values, { setSubmitting, resetForm }) => {
-        console.log(values);
-        setIsEditing(ie => !ie);
+    const handleSubmit = (values, { setSubmitting }) => {
+        axios.patch(`https://vintage-wine-shop.onrender.com/api/excursions/${data._id}`, values, {
+            headers: {
+                "Authorization": token,
+            }
+        })
+            .then(excursion => {
+                dispatch(updateExcursionAC(excursion.data));
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                setIsEditing(ie => !ie);
+            });
     }
 
     return (
@@ -48,21 +58,22 @@ const ExcursionItem = ({ data }) => {
                     // validationSchema={excursionsValidationSchema}
                     onSubmit={handleSubmit}
                 >
-                    <Form>
+                    <Form className={styles.ExcursionItemForm}>
                         <div className={styles.ExcursionHeader}>
                             {
                                 isEditing ? (
                                     <Field
                                         type="text"
                                         name="title"
+                                        className={styles.ExcursionItemInput}
                                     />
                                 ) : (
-                                    <span>{data.title}</span>
+                                    <span className={styles.ExcursionName}>{data.title}</span>
                                 )
                             }
                             <div className={styles.ExcursionButtons}>
                                 {isEditing ? (
-                                    <button type='submit'><Done /></button>
+                                    <button type='submit' style={{ display: 'flex', alignItems: 'center' }}><Done /></button>
                                 ) : (
                                     <Edit onClick={editExcursion} />
                                 )}
@@ -72,9 +83,11 @@ const ExcursionItem = ({ data }) => {
                         {
                             isEditing ? (
                                 <Field
-                                type="text"
-                                name="description"
-                            />
+                                    as='textarea'
+                                    type="text"
+                                    name="description"
+                                    className={styles.ExcursionItemInputArea}
+                                />
                             ) : (
                                 <p className={styles.ExcursionText}>{data.description}</p>
                             )

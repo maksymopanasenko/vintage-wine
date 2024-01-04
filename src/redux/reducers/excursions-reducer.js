@@ -1,6 +1,7 @@
 const FETCH_EXCURSIONS = 'FETCH_EXCURSIONS';
 const DELETE_EXCURSION = 'DELETE_EXCURSION';
 const ADD_EXCURSION = 'ADD_EXCURSION';
+const UPDATE_EXCURSION = 'UPDATE_EXCURSION';
 
 const initialState = {
     excursions: []
@@ -17,6 +18,17 @@ const excursionsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 excursions: [...state.excursions, action.payload]
+            };
+        case UPDATE_EXCURSION:
+            return {
+                ...state,
+                excursions: state.excursions.map(item => {
+                    if (item._id === action.payload._id) {
+                        return action.payload;
+                    } else {
+                        return item;
+                    }
+                })
             };
         case DELETE_EXCURSION:
             return {
@@ -38,8 +50,13 @@ export const addExcursionAC = (excursion) => ({
     payload: excursion
 });
 
-export const deleteExcursionAC = (id) => ({
+export const deleteExcursionAC = (excursion) => ({
     type: DELETE_EXCURSION,
+    payload: excursion
+});
+
+export const updateExcursionAC = (id) => ({
+    type: UPDATE_EXCURSION,
     payload: id
 });
 

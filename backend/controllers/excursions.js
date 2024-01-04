@@ -163,3 +163,32 @@ exports.deleteExcursion = (req, res, next) => {
       }
     });
 };
+
+exports.editExcursion = (req, res, next) => {
+  Excursion.findOne({ _id: req.params.id })
+    .then(async excursion => {
+      if (!excursion) {
+        return res
+          .status(400)
+          .json({ message: `Excursion with id "${req.params.id}" is not found.` });
+      } else {
+        const initialQuery = _.cloneDeep(excursion);
+        const reqBody = _.cloneDeep(req.body);
+        const updatedQuery = { ...initialQuery._doc, ...reqBody };
+
+        Excursion.findOneAndUpdate(
+          { _id: req.params.id },
+          { $set: updatedQuery },
+          { new: true }
+        )
+          .then(excursion => {
+            res.json(excursion);
+          })
+          .catch(err =>
+            res.status(400).json({
+              message: `Error happened on server: "${err}" `
+            })
+          );
+      }
+    });
+};

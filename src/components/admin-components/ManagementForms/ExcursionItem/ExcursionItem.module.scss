@@ -1,0 +1,98 @@
+@import '../../../../assets/mixins/mixins';
+@import '../../../../assets/variables/variables';
+
+
+.ExcursionItem {
+    border: $brd-white;
+    margin-bottom: 20px;
+    display: flex;
+    max-height: 205px;
+
+    img {
+        width: 30%;
+    }
+
+    svg {
+        cursor: pointer;
+
+        &:hover path {
+            fill: $btn-bg;
+        }
+
+        path {
+            @include transition;
+        }
+    }
+}
+
+.ExcursionContent {
+    width: 100%;
+}
+
+.ExcursionHeader {
+    @include flex-ac-sb;
+    padding: 12px;
+    color: $black-color;
+    background: $secondary-color;
+    @include fonts(20px, $secondary-font);
+    font-weight: 700;
+}
+
+.ExcursionText {
+    padding: 12px;
+    height: 120px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+        width: 5px;
+        background-color: $secondary-color;
+        border-radius: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $main-color;
+        border-radius: 5px;
+    }
+}
+
+.ExcursionButtons {
+    @include flex-ac;
+    gap: 10px;
+    margin-left: 10px;
+}
+
+.ExcursionItemInput {
+    padding: 5px;
+    font-size: 20px;
+}
+
+.ExcursionName {
+    border: 1px solid transparent;
+    padding: 5px;
+}
+
+.ExcursionItemInputArea {
+    height: 120px;
+    width: 100%;
+    resize: none;
+    @include fonts(16px, $secondary-font);
+    outline: none;
+    padding: 10px;
+    background: #fff;
+}
+
+.ExcursionItemForm {
+    display: flex;
+    flex-direction: column;
+}
+
+.ExcursionItemEdit {
+    width: 100%;
+}
+
+.ExcursionItemError {
+    color: $btn-bg;
+    @include fonts(16px, $secondary-font);
+    text-align: center;
+    margin-top: 4px;
+}

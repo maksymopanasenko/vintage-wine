@@ -9,7 +9,8 @@ const {
   reserveExcursion,
   addExcursion,
   uploadExcursionImg,
-  deleteExcursion
+  deleteExcursion,
+  editExcursion
 } = require("../controllers/excursions");
 
 const { upload } = require("../commonHelpers/multer");
@@ -47,6 +48,15 @@ router.delete(
   "/:id",
   passport.authenticate("jwt-admin", { session: false }),
   deleteExcursion
+);
+
+// @route   DELETE /excursions/:id
+// @desc    DELETE existing excursion
+// @access  Private
+router.patch(
+  "/:id",
+  passport.authenticate("jwt-admin", { session: false }),
+  editExcursion
 );
 
 

@@ -92,4 +92,8 @@ input[type="range"]:focus {
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
+
+    span {
+        margin-left: 5px;
+    }
 }

@@ -3,33 +3,21 @@ import styles from './ExcursionsForm.module.scss';
 import Button from "../../../Button/Button";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import excursionsValidationSchema from "../../../../validation/excursionsValidationSchema";
+import { extendedExcursionValidationSchema } from "../../../../validation/excursionsValidationSchema";
 import { changeMessageAC, switchSuccessMsg } from "../../../../redux/reducers/submitForm-reducer";
 import { useEffect, useState } from "react";
-import CloseBtn from '../../../../assets/icons/close.svg?react';
+import { addExcursionAC, fetchExcursionsThunk } from "../../../../redux/reducers/excursions-reducer";
+import ExcursionItem from "../ExcursionItem/ExcursionItem";
 
 const ExcursionsForm = () => {
-    const [excursions, setExcursions] = useState([]);
     const token = useSelector((state) => state.user.token);
+    const excursions = useSelector((state) => state.excursions.excursions);
     const dispatch = useDispatch();
+    const [isAction, setIsAction] = useState(false);
 
     useEffect(() => {
-        axios.get('https://vintage-wine-shop.onrender.com/api/excursions/')
-            .then(excursions => setExcursions(excursions.data))
-            .catch(err => console.log(err));
-    }, []);
-
-    const deleteExcursion = (id) => {
-        axios.delete(`https://vintage-wine-shop.onrender.com/api/excursions/${id}`, {
-            headers: {
-                "Authorization": token,
-            }
-        })
-            .then(excursions => {
-                setExcursions(excursions.data);
-            })
-            .catch(err => console.log(err));
-    }
+        dispatch(fetchExcursionsThunk());
+    }, [dispatch]);
 
     const initialValues = {
         title: "",
@@ -59,9 +47,9 @@ const ExcursionsForm = () => {
                         "Content-Type": "multipart/form-data",
                     }
                 })
-                    .then(excursions => {
+                    .then(excursion => {
                         dispatch(changeMessageAC("Data successfully saved!"));
-                        setExcursions(excursions.data);
+                        dispatch(addExcursionAC(excursion.data));
                     })
                     .catch(err => {
                         dispatch(changeMessageAC("Failure!"))
@@ -72,74 +60,93 @@ const ExcursionsForm = () => {
             })
             .finally(() => {
                 resetForm();
+                setIsAction(ia => !ia)
             });
     };
+
+    const addNewExcursion = () => setIsAction(ia => !ia);
 
     return (
         <div>
             <ul className={styles.ExcursionList}>
                 {
-                    excursions?.map(excursion => {
-                        return (
-                            <li key={excursion._id} className={styles.ExcursionItem}>
-                                <p>{excursion.title}</p>
-                                <CloseBtn onClick={() => deleteExcursion(excursion._id)} />
-                            </li>
-                        )
-                    })
+                    excursions?.map(excursion => (
+                        <ExcursionItem key={excursion._id} data={excursion} />
+                    ))
                 }
             </ul>
-            <Formik
-                initialValues={initialValues}
-                validationSchema={excursionsValidationSchema}
-                onSubmit={handleSubmit}
-            >
-                {({ isSubmitting, setFieldValue }) => (
-                    <Form className={styles.AddExcursionForm}>
-                        <h4 className={styles.AddExcursionTitle}>Add new excursion</h4>
-                        <div className={styles.AddExcursionFields}>
-                            <Field
-                                className={styles.AddExcursionInput}
-                                type="text"
-                                name="title"
-                                placeholder="Excursion title"
-                            />
-                            <ErrorMessage
-                                className={styles.AddExcursionError}
-                                name="title"
-                                component="div"
-                            />
-                            <Field
-                                className={styles.AddExcursionInput}
-                                type="text"
-                                name="description"
-                                placeholder="Excursion description"
-                            />
-                            <ErrorMessage
-                                className={styles.AddExcursionError}
-                                name="description"
-                                component="div"
-                            />
-                            <input
-                                className={styles.AddExcursionInput}
-                                type="file"
-                                name="imageURL"
-                                onChange={(e) => setFieldValue('imageURL', e.target.files[0])}
-                            />
-                            <ErrorMessage
-                                className={styles.AddExcursionError}
-                                name="imageURL"
-                                component="div"
-                            />
-                        </div>
-                        <Button
-                            type="submit"
-                            text="Save"
-                            disabled={isSubmitting}
-                        />
-                    </Form>
+
+            <div className={styles.TriggerButton}>
+                {!isAction && (
+                    <Button
+                        text='Add new excursion'
+                        onClick={addNewExcursion}
+                    />
                 )}
-            </Formik>
+            </div>
+
+            {
+                isAction && (
+                    <Formik
+                        initialValues={initialValues}
+                        validationSchema={extendedExcursionValidationSchema}
+                        onSubmit={handleSubmit}
+                    >
+                        {({ isSubmitting, setFieldValue }) => (
+                            <Form className={styles.AddExcursionForm}>
+                                <h4 className={styles.AddExcursionTitle}>Add new excursion</h4>
+                                <div className={styles.AddExcursionFields}>
+                                    <Field
+                                        className={styles.AddExcursionInput}
+                                        type="text"
+                                        name="title"
+                                        placeholder="Excursion title"
+                                    />
+                                    <ErrorMessage
+                                        className={styles.AddExcursionError}
+                                        name="title"
+                                        component="div"
+                                    />
+                                    <Field
+                                        className={styles.AddExcursionInput}
+                                        type="text"
+                                        name="description"
+                                        placeholder="Excursion description"
+                                    />
+                                    <ErrorMessage
+                                        className={styles.AddExcursionError}
+                                        name="description"
+                                        component="div"
+                                    />
+                                    <input
+                                        className={styles.AddExcursionInput}
+                                        type="file"
+                                        name="imageURL"
+                                        onChange={(e) => setFieldValue('imageURL', e.target.files[0])}
+                                    />
+                                    <ErrorMessage
+                                        className={styles.AddExcursionError}
+                                        name="imageURL"
+                                        component="div"
+                                    />
+                                </div>
+                                <div className={styles.FormButtons}>
+                                    <Button
+                                        type="submit"
+                                        text="Save"
+                                        disabled={isSubmitting}
+                                    />
+                                    <Button
+                                        type="button"
+                                        text="Cancel"
+                                        onClick={addNewExcursion}
+                                    />
+                                </div>
+                            </Form>
+                        )}
+                    </Formik>
+                )
+            }
         </div>
     );
 }

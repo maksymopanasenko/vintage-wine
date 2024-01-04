@@ -4,14 +4,16 @@ import Container from '../Container/Container';
 import SectionTitle from './../Title/SectionTitle';
 import SingleExcursion from '../SingleExcursion/SingleExcursion';
 import Button from '../Button/Button';
-import axios from 'axios';
 
 import styles from './Excursions.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchExcursionsThunk } from '../../redux/reducers/excursions-reducer';
 
 const Excursions = () => {
-  const [excursions, setExcursions] = useState([]);
+  const excursions = useSelector((state) => state.excursions.excursions);
   const [readMore, setReadMore] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleReadMore = () => {
     setReadMore(!readMore);
@@ -39,9 +41,7 @@ const Excursions = () => {
   }
 
   useEffect(() => {
-    axios.get('https://vintage-wine-shop.onrender.com/api/excursions/')
-      .then(excursions => setExcursions(excursions.data))
-      .catch(err => console.log(err));
+    dispatch(fetchExcursionsThunk());
   }, []);
 
   return (

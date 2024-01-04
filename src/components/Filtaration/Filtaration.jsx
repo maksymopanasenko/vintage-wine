@@ -18,7 +18,7 @@ const Filtration = () => {
     const { setFilter, setResetFilters } = useContext(FilterContext);
     const currentLink = useSelector(state => state.tabs.currentLink);
     const [links, setLinks] = useState([{ id: 0, name: "All" }]);
-    const [allFilters, setAallFilters] = useState(false);
+    const [allFilters, setAllFilters] = useState(false);
     const [searchParams] = useSearchParams();
     const dispatch = useDispatch();
 
@@ -32,10 +32,13 @@ const Filtration = () => {
             dispatch(changeLinkAC(searchParams.get("categories")));
         }
 
-        const except = ['perPage', 'startPage', 'categories'];
+        const except = ['perPage', 'startPage', "categories"];
         const vals = Array.from(searchParams.entries()).filter((item) => !except.includes(item[0])).map(([key, value]) => ({ [key]: value }));
 
-        let obj = {};
+        let obj = {
+            categories: 'all',
+        };
+        
         vals?.forEach((object) => {
             obj = {...obj, ...object};
         });
@@ -46,7 +49,7 @@ const Filtration = () => {
         dispatch(changeOptionAC(obj));
     }, []);
 
-    const handleAllFilters = () => setAallFilters(prev => !prev);
+    const handleAllFilters = () => setAllFilters(prev => !prev);
 
     const handleSetCurrentLink = (link) => {
         if (currentLink === link) return;

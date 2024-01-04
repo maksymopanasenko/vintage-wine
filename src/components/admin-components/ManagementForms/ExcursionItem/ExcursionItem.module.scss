@@ -6,7 +6,7 @@
     border: $brd-white;
     margin-bottom: 20px;
     display: flex;
-    max-height: 200px;
+    max-height: 205px;
 
     img {
         width: 30%;
@@ -30,9 +30,7 @@
 }
 
 .ExcursionHeader {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    @include flex-ac-sb;
     padding: 12px;
     color: $black-color;
     background: $secondary-color;
@@ -58,8 +56,7 @@
 }
 
 .ExcursionButtons {
-    display: flex;
-    align-items: center;
+    @include flex-ac;
     gap: 10px;
     margin-left: 10px;
 }
@@ -87,4 +84,15 @@
 .ExcursionItemForm {
     display: flex;
     flex-direction: column;
+}
+
+.ExcursionItemEdit {
+    width: 100%;
+}
+
+.ExcursionItemError {
+    color: $btn-bg;
+    @include fonts(16px, $secondary-font);
+    text-align: center;
+    margin-top: 4px;
 }

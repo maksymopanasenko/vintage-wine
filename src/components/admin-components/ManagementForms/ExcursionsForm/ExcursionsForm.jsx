@@ -3,7 +3,7 @@ import styles from './ExcursionsForm.module.scss';
 import Button from "../../../Button/Button";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import excursionsValidationSchema from "../../../../validation/excursionsValidationSchema";
+import { extendedExcursionValidationSchema } from "../../../../validation/excursionsValidationSchema";
 import { changeMessageAC, switchSuccessMsg } from "../../../../redux/reducers/submitForm-reducer";
 import { useEffect, useState } from "react";
 import { addExcursionAC, fetchExcursionsThunk } from "../../../../redux/reducers/excursions-reducer";
@@ -89,7 +89,7 @@ const ExcursionsForm = () => {
                 isAction && (
                     <Formik
                         initialValues={initialValues}
-                        validationSchema={excursionsValidationSchema}
+                        validationSchema={extendedExcursionValidationSchema}
                         onSubmit={handleSubmit}
                     >
                         {({ isSubmitting, setFieldValue }) => (

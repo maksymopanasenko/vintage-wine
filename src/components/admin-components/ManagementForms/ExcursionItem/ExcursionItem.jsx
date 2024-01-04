@@ -6,7 +6,8 @@ import Trash from './icons/delete.svg?react';
 import Edit from './icons/edit.svg?react';
 import Done from './icons/done.svg?react';
 import { useState } from 'react';
-import { Field, Form, Formik } from 'formik';
+import { ErrorMessage, Field, Form, Formik } from 'formik';
+import { excursionValidationSchema } from '../../../../validation/excursionsValidationSchema';
 
 const ExcursionItem = ({ data }) => {
     const token = useSelector((state) => state.user.token);
@@ -55,18 +56,25 @@ const ExcursionItem = ({ data }) => {
             <div className={styles.ExcursionContent}>
                 <Formik
                     initialValues={initialValues}
-                    // validationSchema={excursionsValidationSchema}
+                    validationSchema={excursionValidationSchema}
                     onSubmit={handleSubmit}
                 >
                     <Form className={styles.ExcursionItemForm}>
                         <div className={styles.ExcursionHeader}>
                             {
                                 isEditing ? (
-                                    <Field
-                                        type="text"
-                                        name="title"
-                                        className={styles.ExcursionItemInput}
-                                    />
+                                    <div className={styles.ExcursionItemEdit}>
+                                        <Field
+                                            type="text"
+                                            name="title"
+                                            className={styles.ExcursionItemInput}
+                                        />
+                                        <ErrorMessage
+                                            className={styles.ExcursionItemError}
+                                            name="title"
+                                            component="div"
+                                        />
+                                    </div>
                                 ) : (
                                     <span className={styles.ExcursionName}>{data.title}</span>
                                 )
@@ -92,6 +100,12 @@ const ExcursionItem = ({ data }) => {
                                 <p className={styles.ExcursionText}>{data.description}</p>
                             )
                         }
+
+                        <ErrorMessage
+                            className={styles.ExcursionItemError}
+                            name="description"
+                            component="div"
+                        />
                     </Form>
                 </Formik>
             </div>
